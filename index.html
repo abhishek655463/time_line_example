@@ -31,7 +31,10 @@
                 background-color: #111;
             }
 
-
+            body
+            {
+                overflow-x: hidden;
+            }
             #main 
             {
                 height: 100vh;
@@ -49,6 +52,7 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 40PX 50PX;
+                position: relative;
             }
 
             #nav h2
@@ -86,6 +90,12 @@
                 font-weight: 800;
 
             }
+
+            .ri-menu-4-fill
+            {
+             cursor: pointer;
+                font-size:30px;
+            }
         </style>
 </head>
 <body>
@@ -106,6 +116,51 @@
                 <h3>help</h3>
             </div>
     </div>
-        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+
+// select Button
+let menu=document.querySelector(".ri-menu-4-fill");
+
+let cross=document.querySelector(".ri-close-large-line")
+let tl=gsap.timeline()
+
+gsap.from('#nav h2',{
+top:-15,
+opacity:0,
+duration:0.8,
+});
+
+tl.to("#full",{
+    right:0,
+    duration:0.7
+
+})
+tl.from("#full h3",{
+    x:150,
+    duration:0.7,
+    stagger:0.28,
+    opacity:0
+})
+
+tl.from(cross,{
+    duration:0.5,
+    rotate:360,
+    scale:2,
+    opacity:0
+})
+
+tl.pause()
+
+menu.addEventListener("click",()=>{
+    tl.play()
+})
+cross.addEventListener("click",()=>{
+    tl.reverse()
+})
+
+
+
+</script>
 </body>
 </html>
