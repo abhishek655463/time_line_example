@@ -96,6 +96,21 @@
              cursor: pointer;
                 font-size:30px;
             }
+
+            #data 
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;  
+                
+            }
+            #data span
+            {
+                font-size: 10rem;
+            }
+
         </style>
 </head>
 <body>
@@ -105,6 +120,15 @@
                 <h2>levi</h2>
                 <i class="ri-menu-4-fill"></i>
             
+            </div>
+            
+            <div id="data">
+                <span>h</span>
+                <span>e</span>
+                <span>e</span>
+                <span>l</span>
+                <span>o</span>
+
             </div>
 
             <div id="full">
@@ -123,14 +147,24 @@
 let menu=document.querySelector(".ri-menu-4-fill");
 
 let cross=document.querySelector(".ri-close-large-line")
+let tl2=gsap.timeline()
 let tl=gsap.timeline()
 
-gsap.from('#nav h2',{
-top:-15,
+tl2.from('#nav h2',{
+y:-15,
 opacity:0,
 duration:0.8,
 });
 
+tl2.from("#data span",
+    {
+        opacity:0,
+        y:5,
+        duration:0.8,
+        stagger:0.5
+
+    }
+)
 tl.to("#full",{
     right:0,
     duration:0.7
